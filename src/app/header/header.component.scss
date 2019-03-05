@@ -1,0 +1,36 @@
+.navbar-light {
+    background-color: #004085;
+    .navbar-brand{
+      color: white;
+      font-family: cursive;
+      font-size: 25px;
+      font-style: oblique;
+    }
+    .navbar-nav {
+      .nav-link {
+        color: #fff;
+      }
+      .active > .nav-link {
+        color: #fff;
+        letter-spacing: 1.2px;
+        font-weight: 900;
+      }
+      .nav-link {
+        &.active, &.show {
+          color: #fff;
+          letter-spacing: 1.2px;
+          font-weight: 900;
+        }
+      }
+      .show > .nav-link {
+        color: #fff;
+        letter-spacing: 1.2px;
+        font-weight: 900;
+      }
+    }
+  }
+  
+  li.nav-item.active {
+    background: rgba(14, 79, 148, 0.99);
+    opacity: 0.5;
+  }
