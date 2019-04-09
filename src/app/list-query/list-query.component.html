@@ -1,4 +1,22 @@
-<app-header></app-header>
 <p>
   list-query works!
 </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sl. No</th>
+      <th>Name</th>
+      <th>Username</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users; let i = index;">
+      <td>{{i+1}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.email}}</td>
+    </tr>
+  </tbody>
+</table>

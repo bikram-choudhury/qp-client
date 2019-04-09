@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import { QueryComponent } from './query/query.component';
-import { ListQueryComponent } from './list-query/list-query.component';
+import { resolveService } from './service/resolve.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -11,13 +10,13 @@ const routes: Routes = [
     pathMatch: 'full'
   },{
     path: 'query',
-    component: QueryComponent
-  },{
-    path: 'query/:docId',
-    component: QueryComponent
+    loadChildren: './query/query.module#QueryModule'
   },{
     path: 'show',
-    component: ListQueryComponent
+    loadChildren: './list-query/list-query.module#ListQueryModule',
+    resolve: {
+      users: resolveService
+    }
   },{
     path: '**',
     redirectTo: 'query',
@@ -26,7 +25,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    HttpClientModule,
+    RouterModule.forRoot(routes)
+  ],
+  providers: [resolveService],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
