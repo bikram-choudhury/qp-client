@@ -1,16 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable, of as ObservableOf, throwError } from 'rxjs';
+import { Observable, of as observableOf } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-
+import { HttpService } from './http.service';
 
 @Injectable()
 export class resolveService implements Resolve<any> {
-  private _appUrl: string = '//jsonplaceholder.typicode.com';
-  constructor(private _http: HttpClient){}
+  // private _appUrl: string = '//jsonplaceholder.typicode.com';
+  constructor(private _http: HttpService){}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : Observable<any[]> {
+    return this._http.fetchQuery().pipe(
+      map(resposnse => resposnse),
+      catchError(error => {
+          let errRes = {
+              status: error.status,
+              statusText: error.statusText,
+              type: error.type,
+              url: error.url
+          };
+          return observableOf(errRes);
+      })
+  )
+  }
+
+  /*resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : Observable<any[]> {
     const api = `${this._appUrl}/users`;
     return this._http.get(api).pipe(
       map((response:any[]) => {
@@ -24,6 +38,6 @@ export class resolveService implements Resolve<any> {
         })
       })
     );
-  }
+  }*/
 
 }
