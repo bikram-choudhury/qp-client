@@ -16,5 +16,8 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('token');
     this._routes.navigateByUrl('');
   }
+  findSum(a,b) {
+    return a+b;
+  }
 
 }
