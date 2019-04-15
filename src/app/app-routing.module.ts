@@ -7,9 +7,14 @@ import { AuthenticationGuard } from './guards/authentication.guard';
 import { AuthenticationService } from './service/authentication.service';
 import { AuthorizationGuard } from './guards/authorization.guard';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
     loadChildren: './login/login.module#LoginModule'
   },{
     path: 'query',
