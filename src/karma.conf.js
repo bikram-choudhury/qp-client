@@ -3,6 +3,12 @@
 
 module.exports = function (config) {
   config.set({
+    files: [
+      '../node_modules/jquery/dist/jquery.min.js',
+      '../node_modules/froala-editor/js/froala_editor.pkgd.min.js',
+      '../node_modules/popper.js/dist/umd/popper.min.js',
+      '../node_modules/bootstrap/dist/js/bootstrap.min.js'
+    ],
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
