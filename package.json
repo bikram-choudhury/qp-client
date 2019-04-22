@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build"
+    "postinstall": "npm run build"
   },
   "private": true,
   "dependencies": {
@@ -28,7 +28,8 @@
     "popper.js": "^1.14.7",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
-    "zone.js": "~0.9.0"
+    "zone.js": "~0.9.0",
+    "typescript": "^3.2.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.13.0",
@@ -48,7 +49,6 @@
     "karma-jasmine-html-reporter": "^1.4.0",
     "protractor": "~5.4.0",
     "ts-node": "~8.1.0",
-    "tslint": "~5.16.0",
-    "typescript": "^3.2.4"
+    "tslint": "~5.16.0"
   }
 }
