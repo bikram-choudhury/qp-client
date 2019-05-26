@@ -1,4 +1,44 @@
-<fieldset>
-    <caption>Login Form</caption>
-    <button type="button" (click)="validateUser()">Login</button>
-</fieldset>
+<div class="login-reg-panel">
+	<div class="login-info-box" [ngClass]="{'show-info': panel === 'register'}">
+		<h2>Have an account?</h2>
+		<p>Lorem ipsum dolor sit amet</p>
+		<label id="label-register" for="log-reg-show" (click)="switchPanel('login')">Login</label>
+			<input type="radio" name="active-log-panel" id="log-reg-show"  checked="checked">
+		</div>
+							
+		<div class="register-info-box" [ngClass]="{'show-info': panel === 'login'}">
+			<h2>Don't have an account?</h2>
+			<p>Lorem ipsum dolor sit amet</p>
+			<label id="label-login" for="log-login-show" (click)="switchPanel('register')">Register</label>
+			<input type="radio" name="active-log-panel" id="log-login-show">
+		</div>
+							
+		<div class="white-panel">
+			<div class="login-show" [ngClass]="{'show-log-panel': panel === 'login'}">
+				<h2>LOGIN</h2>
+        <form #loginForm="ngForm" (ngSubmit)="login($event)" >
+          <div class="form-group">
+            <input type="text" [placeholder]="email" [(ngModel)]="loginFormData.username" name="username" required autocomplete="false" />
+            <span class="text-error" *ngIf="loginForm.submitted && !loginFormData.username">Required !!!</span>
+            <span class="text-error" *ngIf="loginForm.submitted && loginFormData.username && !validateEmail(loginFormData.username)">Invalid Email !!!</span>
+          </div>
+          <div class="form-group">
+            <input type="password" [placeholder]="password" [(ngModel)]="loginFormData.password" name="password" maxlength="10" minlength="5" required />
+            <span class="text-error" *ngIf="loginForm.submitted && !loginFormData.password">Required !!!</span>
+            <span class="text-error" *ngIf="loginForm.submitted && loginForm.form.controls.password.errors && loginForm.form.controls.password.errors.minlength">Minimum length should be {{loginForm.form.controls.password.errors.minlength.requiredLength}} !!!</span>
+            <span class="text-error" *ngIf="loginForm.submitted && loginForm.form.controls.password.errors && loginForm.form.controls.password.errors.maxlength">Maximum length length should be {{loginForm.form.controls.password.errors.maxlength.requiredLength}} !!!</span>
+          </div>
+				
+				<input type="submit" value="Login">
+				<a href="">Forgot password?</a>
+        </form>
+			</div>
+			<div class="register-show" [ngClass]="{'show-log-panel': panel === 'register'}">
+				<h2>REGISTER</h2>
+				<input type="text" [placeholder]="email" />
+				<input type="password" [placeholder]="password">
+				<input type="password" [placeholder]="'Confirm Password'">
+				<input type="submit" value="Register">
+			</div>
+		</div>
+	</div>
