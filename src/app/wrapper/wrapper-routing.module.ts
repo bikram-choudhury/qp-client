@@ -17,11 +17,11 @@ const routes: Routes = [{
         pathMatch: 'full'
       },{
         path: 'query',
-        loadChildren: './query/query.module#QueryModule',
+        loadChildren: './../query/query.module#QueryModule',
         canActivate: [AuthenticationGuard]
       },{
         path: 'show',
-        loadChildren: './list-query/list-query.module#ListQueryModule',
+        loadChildren: './../list-query/list-query.module#ListQueryModule',
         canLoad: [AuthorizationGuard],
         resolve: {
           users: resolveService
