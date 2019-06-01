@@ -1,10 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
-import { HttpService } from './service/http.service';
-import { AuthenticationGuard } from './guards/authentication.guard';
-import { AuthenticationService } from './service/authentication.service';
-import { AuthorizationGuard } from './guards/authorization.guard';
 
 export const routes: Routes = [
   {
@@ -15,21 +10,14 @@ export const routes: Routes = [
     loadChildren: './wrapper/wrapper-routing.module#WrapperRoutingModule'
   }, {
     path: '**',
-    redirectTo: 'query',
+    redirectTo: '',
     pathMatch: 'full'
   }
 ];
 
 @NgModule({
   imports: [
-    HttpClientModule,
-    RouterModule.forRoot(routes)
-  ],
-  providers: [
-    HttpService,
-    AuthenticationService,
-    AuthenticationGuard,
-    AuthorizationGuard
+    RouterModule.forRoot(routes, {useHash: true}),
   ],
   exports: [RouterModule]
 })

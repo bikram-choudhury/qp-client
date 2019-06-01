@@ -9,7 +9,7 @@ export class AuthenticationGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : Observable<boolean> | Promise<boolean> | boolean {
         if(!this._authentication.checkAndValidateToken()) {
-            this._routes.navigate(['/']);
+            this._routes.navigate(['/login']);
             return false;
         }
         return true;

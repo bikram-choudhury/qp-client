@@ -7,28 +7,24 @@ import { WrapperComponent } from './wrapper.component';
 import { AuthenticationGuard } from '../guards/authentication.guard';
 import { AuthorizationGuard } from '../guards/authorization.guard';
 import { resolveService } from '../service/resolve.service';
+import { AuthenticationService } from '../service/authentication.service';
 
 const routes: Routes = [{
     path: '',
     component: WrapperComponent,
+    canActivate: [AuthenticationGuard],
     children: [{
         path: '',
-        redirectTo: 'query',
-        pathMatch: 'full'
-      },{
-        path: 'query',
         loadChildren: './../query/query.module#QueryModule',
-        canActivate: [AuthenticationGuard]
       },{
         path: 'show',
         loadChildren: './../list-query/list-query.module#ListQueryModule',
-        canLoad: [AuthorizationGuard],
         resolve: {
           users: resolveService
         }
       },{
         path: '**',
-        redirectTo: 'query',
+        redirectTo: '',
         pathMatch: 'full'
       }]
 }];
@@ -42,6 +38,7 @@ const routes: Routes = [{
         WrapperComponent,
         HeaderComponent,
     ],
+    providers: [ resolveService, AuthenticationGuard, AuthenticationService ],
     exports: [
         HeaderComponent,
     ]

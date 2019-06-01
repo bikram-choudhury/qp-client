@@ -1,21 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-import { HeaderComponent } from './header/header.component';
+import { WrapperRoutingModule } from './wrapper/wrapper-routing.module';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    FormsModule,
+    AppRoutingModule,
+    WrapperRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
