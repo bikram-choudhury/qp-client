@@ -3,11 +3,16 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "start": "NODE_ENV=production node server.js",
+    "build-prod": "ng build --aot --prod",
+    "debug-prev": "nodemon -e js,ts,html --watch src --exec \"npm run build && npm run start\"",
+    "start-prev": "concurrently \"npm run serve-api\" \"npm run serve\"",
+    "serve": "ng serve",
+    "serve-api": "nodemon server.js",
+    "postinstall": "ng build --aot --prod"
   },
   "private": true,
   "dependencies": {
@@ -21,14 +26,22 @@
     "@angular/router": "~7.2.0",
     "@ng-bootstrap/ng-bootstrap": "^4.1.0",
     "angular-froala-wysiwyg": "^2.9.3",
+    "async": "^3.0.1",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
     "bootstrap": "^4.3.1",
+    "concurrently": "^4.1.0",
+    "cookie-parser": "^1.4.4",
     "core-js": "^2.6.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
     "jquery": "^3.3.1",
+    "mongoose": "^5.5.12",
     "popper.js": "^1.14.7",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
-    "zone.js": "~0.9.0",
-    "typescript": "~3.2.4"
+    "typescript": "~3.2.4",
+    "zone.js": "~0.9.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.13.0",
@@ -46,6 +59,7 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
+    "nodemon": "^1.19.1",
     "protractor": "~5.4.0",
     "ts-node": "~8.1.0",
     "tslint": "~5.16.0"
