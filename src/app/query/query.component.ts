@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router, ActivatedRoute,ActivatedRouteSnapshot } from '@angular/router';
+import { Router, ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 
 import { QueryType } from './../models/query-type';
 declare var $: any;
@@ -34,24 +34,25 @@ export class QueryComponent implements OnInit {
     heightMin: 200,
     heightMax: 250
   };
-  queryModel:QueryType = {
-		title:'',
-		summery:'',
-		answer:''
-	};
+  queryModel: QueryType = {
+    title: '',
+    summery: '',
+    answer: ''
+  };
   constructor(private _routes: Router, private _actvRoutes: ActivatedRoute) { }
 
   ngOnInit() {
   }
 
-  resetModel(){
-		this.queryModel = {
-			title:'',
-			summery:'',
-			answer:''
-		}
-		this._routes.navigate(['/show']);
-	}
+  resetModel() {
+    this.queryModel = {
+      title: '',
+      summery: '',
+      answer: ''
+    }
+    this._routes.navigate(['/show']);
+  }
+  save(form) { }
 
   showErrorResoponse(response: any, message?: string) {
 
@@ -107,7 +108,7 @@ export class QueryComponent implements OnInit {
     }
   }
 
-  showNotification(from:string, align:string,type:string,message:string){
-        
+  showNotification(from: string, align: string, type: string, message: string) {
+
   }
 }

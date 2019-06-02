@@ -7,6 +7,11 @@ interface LoginTypeModal {
     username: string,
     password: string
 }
+interface RegisterTypeModal {
+    username: string,
+    password: string,
+    confirm_password: string
+}
 
 @Component({
     selector: 'app-login',
@@ -22,6 +27,11 @@ export class LoginComponent {
         username: '',
         password: ''
     };
+    registerFormData: RegisterTypeModal = {
+        username: '',
+        password: '',
+        confirm_password: ''
+    }
     constructor(private _authentication: AuthenticationService, private _routes: Router) { }
     validateUser() {
         this._authentication.createAndSaveToken();
@@ -44,5 +54,9 @@ export class LoginComponent {
             return false;
         }
         return true;
+    }
+    register(event: Event, registerForm) {
+        event.preventDefault();
+        console.log("registerForm Data: ", registerForm);
     }
 }

@@ -16,7 +16,7 @@
 		<div class="white-panel">
 			<div class="login-show" [ngClass]="{'show-log-panel': panel === 'login'}">
 				<h2>LOGIN</h2>
-        <form #loginForm="ngForm" (ngSubmit)="login($event)" >
+        <form #loginForm="ngForm" (ngSubmit)="login($event, loginForm)" >
           <div class="form-group">
             <input type="text" [placeholder]="email" [(ngModel)]="loginFormData.username" name="username" required autocomplete="false" />
             <span class="text-error" *ngIf="loginForm.submitted && !loginFormData.username">Required !!!</span>
@@ -35,10 +35,26 @@
 			</div>
 			<div class="register-show" [ngClass]="{'show-log-panel': panel === 'register'}">
 				<h2>REGISTER</h2>
-				<input type="text" [placeholder]="email" />
-				<input type="password" [placeholder]="password">
-				<input type="password" [placeholder]="'Confirm Password'">
-				<input type="submit" value="Register">
+				<form #registerForm="ngForm" (submit)="register($event, registerForm)">
+          <div class="form-group">
+              <input type="text" [placeholder]="email" [(ngModel)]="registerFormData.username" name="username" required />
+              <span class="text-error" *ngIf="registerForm.submitted && registerForm.form.controls.username.errors && registerForm.form.controls.username.errors.required">Required !!!</span>
+              <span class="text-error" *ngIf="registerForm.submitted && registerFormData.username && !validateEmail(registerFormData.username)">Invalid Email !!!</span>
+          </div>
+          <div class="form-group">
+            <input type="password" [placeholder]="password" [(ngModel)]="registerFormData.password" name="password" required minlength="4" maxlength="10" />
+            <span class="text-error" *ngIf="registerForm.submitted && registerForm.form.controls.password.errors && registerForm.form.controls.password.errors.required">Required !!!</span>
+            <span class="text-error" *ngIf="registerForm.submitted && registerForm.form.controls.password.errors && !registerForm.form.controls.password.errors.required">
+              minlength should be {{registerForm.form.controls.password.errors.minlength.requiredLength}}
+            </span>
+          </div>
+          <div class="form-group">
+            <input type="password" [placeholder]="'Confirm Password'" [(ngModel)]="registerFormData.confirm_password" name="confirm_password" required />
+            <span class="text-error" *ngIf="registerForm.submitted && registerForm.form.controls.confirm_password.errors && registerForm.form.controls.confirm_password.errors.required ">Required !!!</span>
+            <span class="text-error" *ngIf="registerForm.submitted && registerFormData.confirm_password && registerFormData.password != registerFormData.confirm_password">Not matching with password</span>
+          </div>
+          <input type="submit" value="Register" />
+        </form>
 			</div>
 		</div>
 	</div>
