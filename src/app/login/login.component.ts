@@ -13,6 +13,15 @@ interface RegisterTypeModal {
     confirm_password: string
 }
 
+interface ForgetpasswordTypeModalEmail {
+    usernameforgetpassword: string
+}
+
+interface ForgetpasswordTypeModalPC {
+    newpassword: string,
+    confirm_password: string
+}
+
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -22,6 +31,7 @@ export class LoginComponent {
 
     email: string = 'Email / Username';
     password: string = 'Password';
+    newpassword: string = 'New Password';
     panel: string = 'login';
     loginFormData: LoginTypeModal = {
         username: '',
@@ -32,6 +42,17 @@ export class LoginComponent {
         password: '',
         confirm_password: ''
     }
+
+    forgetpasswordFormDataEmail: ForgetpasswordTypeModalEmail = {
+        usernameforgetpassword: ''
+
+    }
+
+    forgetpasswordFormDataPC: ForgetpasswordTypeModalPC = {
+        newpassword: '',
+        confirm_password: ''
+    }
+
     constructor(private _authentication: AuthenticationService, private _routes: Router) { }
     validateUser() {
         this._authentication.createAndSaveToken();
@@ -58,5 +79,16 @@ export class LoginComponent {
     register(event: Event, registerForm) {
         event.preventDefault();
         console.log("registerForm Data: ", registerForm);
+    }
+
+    forgetpasswordEmail(event: Event, forgetpasswordFormEmail) {
+        event.preventDefault();
+        console.log("forgetpasswordFormEmail Data: ", forgetpasswordFormEmail);
+    }
+
+    
+    forgetpasswordPC(event: Event, forgetpasswordFormPC) {
+        event.preventDefault();
+        console.log("forgetpasswordFormPC Data: ", forgetpasswordFormPC);
     }
 }

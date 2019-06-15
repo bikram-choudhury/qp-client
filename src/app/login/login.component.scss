@@ -39,7 +39,7 @@ a {
     display: none;
   }
   color: #B8B8B8;
-  #label-login, #label-register {
+  #label-login, #label-register, #label-forgetPassword {
     border: 1px solid #9E9E9E;
     padding: 5px 5px;
     width: 150px;
@@ -164,3 +164,61 @@ a {
 .text-error {
   color: red;
 }
+
+/* Forget Password Starts */
+.forget-password {
+  display: none;
+}
+
+.show-forget-password {
+  display: block !important;
+}
+
+.forget-password h2 {
+  color: #000;
+  text-align: left;
+  width: 85%;
+  padding-top: 40px;
+  padding-bottom: 30px;
+  margin: 0 auto;
+}
+
+.forget-password input[type="text"], .forget-password input[type="password"] {
+  width: 85%;
+  height: 51px;
+  padding: 10px;
+}
+
+.forget-password input[type="submit"] {
+  max-width: 150px;
+  width: 100%;
+  background: #444444;
+  color: #f9f9f9;
+  border: none;
+  padding: 10px;
+  text-transform: uppercase;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.forget-password .text-error {
+    display: block;
+    text-align: left;
+    width: 85%;
+    margin: 0 auto;
+}
+input.check-email-btn {
+  margin-bottom: 35px;
+}
+
+#label-fogetpassword {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#label-fogetpassword:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Forget Password Ends */
