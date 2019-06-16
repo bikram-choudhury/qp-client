@@ -5,7 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RegistrationService } from '../service/register.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpInterceptors } from '../interceptor/http.interceptor';
 
 const routes:Routes = [{
     path: '',
@@ -20,7 +21,15 @@ const routes:Routes = [{
         FormsModule,
         HttpClientModule
     ],
-    providers:[AuthenticationService, RegistrationService]
+    providers:[
+        AuthenticationService,
+        RegistrationService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: HttpInterceptors,
+            multi: true
+        }
+    ]
 })
 export class LoginModule {
 

@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   }
   logout() {
     localStorage.removeItem('token');
-    this._routes.navigateByUrl('');
+    this._routes.navigateByUrl('/login');
   }
   findSum(a,b) {
     return a+b;
