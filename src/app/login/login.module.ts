@@ -4,6 +4,8 @@ import { AuthenticationService } from '../service/authentication.service';
 import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RegistrationService } from '../service/register.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes:Routes = [{
     path: '',
@@ -15,9 +17,10 @@ const routes:Routes = [{
     imports:[
         RouterModule.forChild(routes),
         CommonModule,
-        FormsModule
+        FormsModule,
+        HttpClientModule
     ],
-    providers:[AuthenticationService]
+    providers:[AuthenticationService, RegistrationService]
 })
 export class LoginModule {
 

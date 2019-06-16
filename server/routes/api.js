@@ -24,7 +24,6 @@ router.post('/user/authenticate', (request, response) => {
             UserController.authenticate(authInfo)
             .then(authResponse => {
                 response.json({
-                    userId: userResponse._id,
                     name: userResponse.name,
                     username: userResponse.username,
                     email: userResponse.email,

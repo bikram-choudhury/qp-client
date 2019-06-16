@@ -44,9 +44,13 @@
 				<h2>REGISTER</h2>
 				<form #registerForm="ngForm" (submit)="register($event, registerForm)">
           <div class="form-group">
-              <input type="text" [placeholder]="email" [(ngModel)]="registerFormData.username" name="username" required />
-              <span class="text-error" *ngIf="registerForm.submitted && registerForm.form.controls.username.errors && registerForm.form.controls.username.errors.required">Required !!!</span>
-              <span class="text-error" *ngIf="registerForm.submitted && registerFormData.username && !validateEmail(registerFormData.username)">Invalid Email !!!</span>
+            <input type="text" [placeholder]="'Name'" [(ngModel)]="registerFormData.name" name="name" required />
+            <span class="text-error" *ngIf="registerForm.submitted && registerForm.form.controls.name.errors && registerForm.form.controls.name.errors.required">Required !!!</span>
+        </div>
+          <div class="form-group">
+              <input type="text" [placeholder]="email" [(ngModel)]="registerFormData.email" name="email" required />
+              <span class="text-error" *ngIf="registerForm.submitted && registerForm.form.controls.email.errors && registerForm.form.controls.email.errors.required">Required !!!</span>
+              <span class="text-error" *ngIf="registerForm.submitted && registerFormData.email && !validateEmail(registerFormData.email)">Invalid Email !!!</span>
           </div>
           <div class="form-group">
             <input type="password" [placeholder]="password" [(ngModel)]="registerFormData.password" name="password" required minlength="4" maxlength="10" />
