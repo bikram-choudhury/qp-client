@@ -42,6 +42,13 @@ export class LoginComponent implements OnInit {
         password: '',
         confirm_password: ''
     }
+    forgetpasswordFormDataEmail: ForgetpasswordTypeModalEmail = {
+        usernameforgetpassword: ''
+    }
+    forgetpasswordFormDataPC: ForgetpasswordTypeModalPC = {
+        newpassword: '',
+        confirm_password: ''
+    }
 
     constructor(private _authentication: AuthenticationService, private _routes: Router, private _register: RegistrationService) { }
     
@@ -50,13 +57,6 @@ export class LoginComponent implements OnInit {
         if (token) {
             location.href = "https://cli.angular.io/";
         }
-    }
-    forgetpasswordFormDataEmail: ForgetpasswordTypeModalEmail = {
-        usernameforgetpassword: ''
-    }
-    forgetpasswordFormDataPC: ForgetpasswordTypeModalPC = {
-        newpassword: '',
-        confirm_password: ''
     }
     validateUser() {
         this._authentication.createAndSaveToken();
