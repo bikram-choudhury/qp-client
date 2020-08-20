@@ -27,7 +27,7 @@
     "@ng-bootstrap/ng-bootstrap": "^4.1.0",
     "angular-froala-wysiwyg": "^2.9.3",
     "async": "^3.0.1",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.3.1",
     "concurrently": "^4.1.0",
